@@ -1,0 +1,99 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+
+  <head>
+	<meta name="description" content="Gina Collecchia: Author, music technologist, and mathematician " />
+	<meta keywords="">
+    <title>Tell Me About My Music!</title>
+    <style type="text/css">
+      @font-face{font-family: 'Alice'; font-style: normal; font-weight: normal; src:local('Alice'), local('Alice-Regular'), url('alice.woff') format('woff');} 
+	  body{font-family:Alice,Georgia,Times New Roman,serif;font-size:40px;background-color: #ffffff; text-align: center;}
+	  a{text-decoration:none;}
+      img { border: 0px; }
+	  .qq-uploader { position:relative; width: 100%; margin: 0 auto;}
+
+	.qq-upload-button {
+	    display:block; /* or inline-block */
+	    padding: 7px; text-align:center; margin: 0 auto;
+	    color:#444;
+	    border-radius: 7px;
+	}
+	.qq-upload-button-hover {background:#eee;}
+	.qq-upload-button-focus {outline:1px dotted black;}
+
+	.qq-upload-drop-area {
+	    position:absolute; top:0; left:0; width:100%; height:32px; border-radius: 8px; min-height: 32px; z-index:2;
+	    background:#99FF99; text-align:center; 
+	}
+	.qq-upload-drop-area span {
+	    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
+	}
+	.qq-upload-drop-area-active {background:#99FF99}
+
+	.qq-upload-list { display: none;}
+	.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
+	.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+	    margin-right: 7px;
+	}
+
+	.qq-upload-file {}
+	.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
+	.qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+	.qq-upload-failed-text {display:none;}
+	.qq-upload-fail .qq-upload-failed-text {display:inline;}
+	
+    </style>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<script language="javascript" type="text/javascript">
+	 function playSound(soundfile) {
+	 document.getElementById("dummy").innerHTML=
+	 "<embed src=\""+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+	 }
+	 </script>
+	<!--[if IE]><script type="text/javascript" src="/static/js/excanvas.js"></script><![endif]-->
+	<script type="text/javascript" src='/static/js/open_cachebust_2.js'></script>
+	<script type='text/javascript' src="/static/js/socket.io.js"></script>
+	<script type="text/javascript" src='/static/js/front_cachebust_2.js'></script>
+	<script type="text/javascript">window.wubconfig = {"socket_extra_sep": "/", "upload_text": "To learn something new about a song that you love, drag-and-drop a song from your computer into this box (or click here)", "soundcloud_consumer": "6325e96fcef18547e6552c23b4c0788c", "allowed_file_extensions": ["mp3", "m4a", "mp4", "wav"], "socket_io_port": 8001, "progress_resource": "progress", "soundcloud_redirect": "http://the.wubmachine.com/static/sc.html", "remember_transport": false, "drop_text": "Drop a song here to remix!", "monitor_resource": "watch"};</script>
+	<script>WEB_SOCKET_SWF_LOCATION = 'http://cdn.socket.io/stable/WebSocketMain.swf';</script>
+	<link rel="stylesheet" type="text/css" href="http://the.wubmachine.com/static/css/player.css" />
+  </head>
+
+  <body>
+	<span id="dummy"></span>
+	<!--<p><img src="img/frame_top.gif"> <br>
+    
+      I WILL TELL YOU ABOUT YOUR MUSIC </p>
+	  <p>VERY SOON. </p>
+		<p>
+		SINCERELY, <a href="http://ginacollecchia.com/">REGINA COLLECCHIA</a> <br>
+		<img src="img/frame_bottom.gif">
+	</p>-->
+	
+	<div id="container">
+		<h1><a href="http://tellmeaboutmymusic.com"><img src="img/logo.jpg" title="Tell Me About My Music" alt="Tell Me About My Music" /></a></h1>
+		<div id="precontent"></div>
+		<div id="content">
+			<div id="spinner"></div>
+			<div id="file-uploader">
+				<div class="qq-upload-button" style="position: relative; overflow-x: hidden; overflow-y: hidden; direction: ltr; font-size:30px; color #444444; text-align:center;">
+				To learn something new about a song that you love, <br>
+				drag-and-drop a song from your computer into this box (or click here)
+				<input multiple="multiple" type="file" name="file" style="position: absolute; right: 0px; top: 0px; font-family: Arial; font-size: 40px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; cursor: pointer; opacity: 0; "/>
+				</div>
+				<ul class="qq-upload-list"/>
+				<div class='qq-upload-button red'>Sorry, your browser isn't able to tell you about your music.<br />Please try using <a href='http://chrome.google.com'>Google Chrome</a> or <a href='http://firefox.com'>Mozilla Firefox</a>.</div>
+
+			</div>
+			<div class="progress">
+				<div class="number"></div>
+				<div class="text"></div>
+			</div>
+		</div>
+	</div>
+
+  </body>
+</html>
